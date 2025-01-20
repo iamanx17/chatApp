@@ -1,0 +1,96 @@
+.message-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.upper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+}
+
+.heading h1 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.heading p {
+  font-size: 16px;
+  color: #aeaeaf;
+}
+.upper-icons {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #3b3b3b;
+}
+
+.icon:hover {
+  color: #000;
+}
+
+.message {
+  overflow-y: scroll;
+  margin: 10px 0;
+  padding: 10px;
+  height: 100%;
+}
+.message-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  padding: 8px 15px;
+  border-radius: 10px;
+  background-color: rgba(62, 147, 226, 0.4);
+}
+.message-input input {
+  width: 100%;
+  font-size: 14px;
+  background-color: transparent;
+  margin: 0 10px;
+}
+
+.message-input input:focus {
+  outline: none;
+}
+
+.message-input i {
+  font-size: 20px;
+  color: #3b3b3b;
+  cursor: pointer;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.user .user-image {
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.user .user-image img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.user-message {
+  background-color: rgba(62, 147, 226, 0.4);
+  color: #111;
+  border-radius: 50px;
+  border-bottom-left-radius: 0;
+  padding: 8px 12px;
+}

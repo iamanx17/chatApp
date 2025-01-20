@@ -1,0 +1,62 @@
+.register-container {
+  padding: 8px 12px;
+  height: 70vh;
+  width: 70vw;
+}
+
+.register-form {
+  @apply w-[60%] h-full flex flex-col items-center rounded-xl py-2;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.register-form h1 {
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.form-row{
+    display: flex;
+    align-items: center;
+}
+.form-col{
+    margin:8px;
+}
+
+.form-col label {
+  font-size: 16px;
+}
+
+.form-col input {
+  width: 100%;
+  background-color: transparent;
+  border-bottom-width: 2px;
+  border-bottom-color: #000;
+  margin: 8px 0;
+  padding: 8px 0;
+}
+
+.form-col input:focus,
+.form-col input:active {
+  outline: none;
+}
+
+.form-col input::placeholder {
+  font-size: 14px;
+}
+
+.btn {
+  background-color: #000;
+  color: #fff;
+  margin: 10px 0;
+  width: 60%;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}

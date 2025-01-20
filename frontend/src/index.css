@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.chat-container {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  height: 100vh;
+  padding: 10px 20px;
+}
+
+.main {
+  background-color: #fff;
+  color: #000;
+  width: 100%;
+  border-radius: 20px;
+  padding: 8px 10px;
+  display: flex;
+}

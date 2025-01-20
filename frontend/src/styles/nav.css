@@ -1,0 +1,53 @@
+.nav-options {
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-options ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    color: #aeaeaf;
+  }
+  
+  .nav-options ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  
+  .nav-options ul li:hover,
+  .nav-options ul li:active {
+    color: #fff;
+  }
+  
+  .nav-options ul li i {
+    font-size: 16px;
+  }
+  
+  .nav-options ul li span {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .logout {
+    font-size: 16px;
+    display: flex;
+    color: #aeaeaf;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .logout:hover {
+    color: #fff;
+  }
