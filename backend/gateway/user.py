@@ -8,6 +8,7 @@ class userGateway:
     async def register_user(self, user_entity):
         try:
             email = user_entity.get('email')
+            print(email, 'email is')
             user = await self.if_user_exist(unique_id=email)
             if user:
                 return {'error': 'Email-id already exists!'}
@@ -26,12 +27,10 @@ class userGateway:
             if user:
                 return user
 
-            if not ObjectId.is_valid(unique_id):
-                return {'error': f'ObjectId is not valid {unique_id}'}
-            
-            user = await userModel.find_one({'_id': ObjectId(unique_id)})
-            if user:
-                return user
+            if ObjectId.is_valid(unique_id):
+                user = await userModel.find_one({'_id': ObjectId(unique_id)})
+                if user:
+                    return user
 
         except Exception as e:
             print("error occured while checking user", e)
@@ -64,7 +63,8 @@ class userGateway:
 
             return {
                 'message': "Login successful",
-                'api_key': api_key
+                'api_key': api_key,
+                "user_id": str(user.get('_id'))
             }
 
         except Exception as e:

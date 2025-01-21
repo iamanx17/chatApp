@@ -11,6 +11,7 @@ user_middleware = userMiddleware()
 async def user_register(user: userRegisterEntity):
     try:
         user_dict = user.model_dump()
+        print('user_dict is', user_dict)
         response = await user_middleware.create_user(user_entity=user_dict)
         return response
     except Exception as e:
