@@ -7,7 +7,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=['http://localhost:3000/', 'http://localhost:3000'],
     allow_credentials=['*'],
     allow_methods=['*'],
     allow_headers=['*']
@@ -21,3 +21,4 @@ app.include_router(chat_router, prefix='/ws', tags=['Chat'])
 @app.get('/')
 def welcome_chat_app():
     return {'message': "Welcome to the chatApp"}
+
