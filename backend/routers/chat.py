@@ -15,7 +15,7 @@ async def recieve_messages(websocket:WebSocket, sender_id:str):
             reciever_id = data.get('receiver_id')
             message = data.get('message')
             if reciever_id:
-                conn.send_message(message=message, user_id=reciever_id)
+                await conn.send_message(message=message, user_id=reciever_id)
                 data['sender_id'] = sender_id
                 conn.save_message(data)            
     
