@@ -27,6 +27,23 @@ class userMiddleware:
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail=str(e)
             )
+    
+    async def fetch_user(self, user_id):
+        try:
+            user = await self.user_gateway.fetch_user(user_id=user_id)
+            if not user:
+                return {}
+            
+            return {
+                'first_name': user.get('first_name'),
+                'last_name': user.get('last_name'),
+                'email': user.get('email')
+            }
+        except Exception as e:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=str(e)
+            )
 
     async def fetch_followers(self, user_id):
         try:

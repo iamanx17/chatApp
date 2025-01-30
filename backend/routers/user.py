@@ -30,6 +30,14 @@ async def user_login(user: userLoginEntity):
         print('Error occured while login', e)
         return constants.ERROR_RESPONSE['error'].format(str(e))
 
+@user_router.get('/{user_id}')
+async def fetch_user(user_id:str):
+    try:
+        response = await user_middleware.fetch_user(user_id=user_id)
+        return response
+    except Exception as e:
+        return constants.ERROR_RESPONSE['error'].format(str(e))
+
 
 @user_router.get('/getfollowers')
 async def fetch_followers(user_id: str = Depends(user_middleware.validate_api_key)):

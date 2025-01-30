@@ -35,6 +35,14 @@ class userGateway:
         except Exception as e:
             print("error occured while checking user", e)
 
+    async def fetch_user(self, user_id):
+        try:
+            user = await userModel.find_one({'_id': ObjectId(user_id)})
+            if user:
+                return user
+        except Exception as e:
+            print('Error occured while fetching user', e)
+
     async def validate_api_key(self, api_key):
         try:
             user = await userModel.find_one({'api_key': api_key})
@@ -64,6 +72,9 @@ class userGateway:
             return {
                 'message': "Login successful",
                 'api_key': api_key,
+                'first_name': user.get('first_name'),
+                'last_name': user.get('last_name'),
+                'email': user.get('email'),
                 "user_id": str(user.get('_id'))
             }
 
@@ -78,7 +89,8 @@ class userGateway:
             if not user:
                 return {'error': 'user does not exist'}
 
-            follower_cursor = followerModel.find({'user_id': ObjectId(user_id)})
+            follower_cursor = followerModel.find(
+                {'user_id': ObjectId(user_id)})
             followers = await follower_cursor.to_list()
 
             return followers
