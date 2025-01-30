@@ -4,9 +4,9 @@ from typing import Optional
 from datetime import datetime
 
 class messageEntity(BaseModel):
-    content: str
+    message: str
     reciever_id: str
-    sender_id: str
+    user_id: str
     timestamp: Optional[datetime] = Field(created_at = datetime.utcnow())
 
 
