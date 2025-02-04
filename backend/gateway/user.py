@@ -24,6 +24,7 @@ class userGateway:
 
     async def if_user_exist(self, unique_id):
         try:
+            get_or_create_event_loop()
             user = await userModel.find_one({'email': unique_id})
             if user:
                 return user
