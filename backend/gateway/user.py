@@ -1,7 +1,7 @@
 from models import userModel
 from models import followerModel
 from bson.objectid import ObjectId
-from utils.event_loop import get_or_create_event_loop
+import asyncio
 import uuid
 
 
@@ -24,7 +24,12 @@ class userGateway:
 
     async def if_user_exist(self, unique_id):
         try:
-            get_or_create_event_loop()
+            loop = asyncio.get_event_loop()
+            if loop.is_closed():
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                
+
             user = await userModel.find_one({'email': unique_id})
             if user:
                 return user
@@ -41,7 +46,6 @@ class userGateway:
 
     async def fetch_user(self, user_id):
         try:
-            get_or_create_event_loop()
             user = await userModel.find_one({'_id': ObjectId(user_id)})
             if user:
                 return user
