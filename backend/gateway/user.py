@@ -1,6 +1,7 @@
 from models import userModel
 from models import followerModel
 from bson.objectid import ObjectId
+from utils.event_loop import get_or_create_event_loop
 import uuid
 
 
@@ -39,6 +40,7 @@ class userGateway:
 
     async def fetch_user(self, user_id):
         try:
+            get_or_create_event_loop()
             user = await userModel.find_one({'_id': ObjectId(user_id)})
             if user:
                 return user
