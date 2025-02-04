@@ -30,6 +30,9 @@ class userMiddleware:
     
     async def fetch_user(self, user_id):
         try:
+            print('user id is', user_id)
+            if not user_id:
+                return {}
             user = await self.user_gateway.fetch_user(user_id=user_id)
             if not user:
                 return {}

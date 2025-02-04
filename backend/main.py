@@ -4,7 +4,13 @@ from routers.user import user_router
 from routers.chat import chat_router
 import constants
 
-app = FastAPI()
+app = FastAPI(
+    title="chatApp",
+    description="Chat with your friends..",
+    summary="Developed by @iamanx17",
+    version="0.0.1"
+)
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -17,3 +23,9 @@ app.add_middleware(
 
 app.include_router(user_router, prefix='/user', tags=['Users API'])
 app.include_router(chat_router, prefix='/ws', tags=['chat webscoket'])
+
+@app.get('/')
+def welcome():
+    return {
+        'message': "Welcome to chatApp"
+    }

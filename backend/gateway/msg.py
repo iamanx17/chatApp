@@ -1,4 +1,4 @@
-from models.msg import msgModel
+from models import msgModel
 from bson.objectid import ObjectId
 
 

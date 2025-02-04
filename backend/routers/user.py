@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends
-from models.user import userRegisterEntity, userLoginEntity
-from models.follower import followerEntity
+from models import UserLoginEntity, UserRegisterEntity
 from middleware.user import userMiddleware
 import constants
 
@@ -9,7 +8,7 @@ user_middleware = userMiddleware()
 
 
 @user_router.post('/register')
-async def user_register(user: userRegisterEntity):
+async def user_register(user: UserRegisterEntity):
     try:
         user_dict = user.model_dump()
         response = await user_middleware.create_user(user_entity=user_dict)
@@ -20,7 +19,7 @@ async def user_register(user: userRegisterEntity):
 
 
 @user_router.post('/login')
-async def user_login(user: userLoginEntity):
+async def user_login(user: UserLoginEntity):
     try:
         user_json = user.model_dump()
         response = await user_middleware.login_user(user_entity=user_json)
@@ -30,7 +29,7 @@ async def user_login(user: userLoginEntity):
         print('Error occured while login', e)
         return constants.ERROR_RESPONSE['error'].format(str(e))
 
-@user_router.get('/{user_id}')
+@user_router.get('/getuser/{user_id}')
 async def fetch_user(user_id:str):
     try:
         response = await user_middleware.fetch_user(user_id=user_id)
@@ -50,10 +49,8 @@ async def fetch_followers(user_id: str = Depends(user_middleware.validate_api_ke
         return constants.ERROR_RESPONSE['error'].format(str(e))
 
 @user_router.post('/addfollowers')
-async def add_followers(follower_entity:followerEntity, user_id: str = Depends(user_middleware.validate_api_key)):
+async def add_followers(follower_id:str, user_id: str = Depends(user_middleware.validate_api_key)):
     try:
-        data = follower_entity.model_dump()
-        follower_id = data.get('follower_id')
         response = await user_middleware.add_followers(user_id=user_id, follower_id=follower_id)
         return response
 

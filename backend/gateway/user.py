@@ -1,5 +1,5 @@
-from models.user import userModel
-from models.follower import followerModel
+from models import userModel
+from models import followerModel
 from bson.objectid import ObjectId
 import uuid
 
