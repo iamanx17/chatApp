@@ -33,6 +33,8 @@ class userGateway:
                     return user
 
         except Exception as e:
+            import traceback
+            print(traceback.format_exc())
             print("error occured while checking user", e)
 
     async def fetch_user(self, user_id):
